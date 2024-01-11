@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateMaterial : MonoBehaviour
-{
+public class RotateMaterial : MonoBehaviour {
     public Material[] materials;
-    private int materialIndex = 0;
+    private int materialIndex;
     private MeshRenderer meshRenderer;
-
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         meshRenderer = GetComponent<MeshRenderer>();
+        materialIndex = 0;
+
+        LetsRotateMaterial();
     }
 
-    // Update is called once per frame
-    public void Rotate()
-    {
-        materialIndex = ++materialIndex % materials.Length;
+    public void LetsRotateMaterial() {
+        materialIndex = (++materialIndex) % materials.Length;
         meshRenderer.material = materials[materialIndex];
+        Debug.Log(materialIndex);
     }
+
 }
